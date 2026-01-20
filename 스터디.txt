@@ -1,0 +1,101 @@
+1.  each 함수로 배열 순회
+$array = array("apple" => 1000, "banana" => 2000, "orange" => 1500);
+
+while($element = each($array)) {
+    echo $element['key']." ".$element['value']."<br>";
+}
+
+2. 배열을 인자로 넘기기
+function sum(...$num) // PHP 5.6 이상
+
+{
+    $sum = 0;
+    foreach($num as $n) {
+        $sum += $n;
+    }
+    return $sum;
+}
+
+3. 0은 비어있는걸로 간주함
+- 정수 0
+
+- 실수 0.0
+
+- 문자열 "0"
+
+$var = 0;
+
+var_dump(isset($var)); // true
+
+var_dump(empty($var)); // true
+
+4. 배열 정렬
+sort($arr, SORT_NUMERIC); // 배열 요소를 숫자로 비교함.   -> 1, 2, 15, 21, 121
+sort($arr, SORT_STRING);  // 배열 요소를 문자열로 비교함. -> 1, 121, 15, 2, 21
+asort($arr); // 요소의 값을 기준으로 배열 정렬
+ksort($arr); // 키값을 기준으로 배열 정렬
+
+
+5. 쿠키
+<?php
+
+    $cookieName = "city";
+
+    $cookieValue = "서울";
+
+    setcookie($cookieName, $cookieValue, time()+60, "/"); // 쿠키가 60초 간 지속됨.
+
+
+    if(!isset($_COOKIE[$cookieName])) { // 해당 쿠키가 존재하지 않을 때
+
+        echo "{$cookieName}라는 이름의 쿠키는 아직 생성되지 않았습니다.";
+
+    } else {                            // 해당 쿠키가 존재할 때
+
+        echo "{$cookieName}라는 이름의 쿠키가 생성되었으며, 생성된 값은 '".$_COOKIE[$cookieName]."'입니다.";
+
+    }
+?>
+
+
+
+실수 표현 방식
+1. 고정 소수점 방식
+2. 부동 소수점 방식
+
+
+
+
+자바
+
+타입 변환
+1. 묵시적 타입 변환(자동 타입 변환)
+2. 명시적 타입 변환(강제 타입 변환)
+
+
+이름을 가지는 반복문
+allLoop :
+for (int i = 2; i < 10; i++) {
+    for (int j = 2; j < 10; j++) {
+        if (i == 5) {
+            break allLoop;
+        }
+        System.out.println(i + " * " + j + " = " + (i * j));
+    }
+}
+
+this, this() 차이점
+this = 현재 객체 자신
+this() = 같은 클래스 다른 생성자 호출
+
+
+네트워크
+
+□ 포트 포워딩
+- 하나의 IP 주소와 포트 번호 결합의 통신 요청을 다른 곳으로 넘겨주는 네트워크 주소 변환( NAT )의 응용
+
+
+
+
+
+
