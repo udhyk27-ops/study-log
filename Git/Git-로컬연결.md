@@ -20,7 +20,7 @@ git init
 
  
 
-### (로컬)내 브랜치 main 브랜치로 merge ###
+### (로컬) 내 브랜치 main 브랜치로 풀 리퀘스트  ###
 ** push를 하여 풀리퀘스트 요청 전 자신의 로컬의 main 브랜치를 최신화 작업을 수행 후 진행해주세요
 
 1) 내 브랜치에 커밋할 내용 추가
@@ -46,7 +46,7 @@ git merge main
 6) 내 브랜치 push → PR(풀 리퀘스트) 원격 main에 병합 요청
 git push -u origin ydh
 
-
+7) 깃 저장소에서 관리자 또는 내가 merge (병합)
 
 
 
