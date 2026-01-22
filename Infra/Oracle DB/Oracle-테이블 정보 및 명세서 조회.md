@@ -26,6 +26,11 @@ FROM USER_SEQUENCES
 WHERE SEQUENCE_NAME = T_NOTICE_SEQ;
 
 
+
+
+
+
+
 -- 테이블 명세서 조회 쿼리
 SELECT
     tc.comments AS table_comment,      -- 테이블 코멘트

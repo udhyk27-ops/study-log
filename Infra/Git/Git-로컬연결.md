@@ -44,7 +44,8 @@ git merge main
 * 충돌 파일 있는지 확인
 
 6) 내 브랜치 push → PR(풀 리퀘스트) 원격 main에 병합 요청
-git push -u origin ydh
+(최초에만 원격 & 로컬 연결하기 위해 옵션 사용 git push -u origin ydh)
+git push origin ydh
 
 7) 깃 저장소에서 관리자 또는 내가 merge (병합)
 
