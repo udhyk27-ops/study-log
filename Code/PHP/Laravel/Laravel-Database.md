@@ -50,7 +50,7 @@ DATE
 ->limit(10);
 ->offset(20);
 
-🔹 3. JOIN 계열 (매우 중요 ⭐⭐⭐)
+2. JOIN 
 기본 JOIN
 ->join('T_USER U', 'E.F_USER_ID', '=', 'U.F_ID');
 ->leftJoin('T_USER U', 'E.F_USER_ID', '=', 'U.F_ID');
@@ -62,19 +62,19 @@ DATE
 });
 
 
-🔹 5. GROUP / HAVING
+3. GROUP / HAVING
 ->groupBy('F_CATEGORY');
 
 ->having('CNT', '>', 5);
 ->havingRaw('COUNT(*) > ?', [5]);
 
-🔹 6. 페이징 (실무 필수)
+4. 페이징 (실무 필수)
 ->paginate(10);
 ->simplePaginate(10);
 
 ->forPage($page, $perPage);
 
-🔹 7. 결과 조회
+5. 결과 조회
 ->get();        // 여러 건
 ->first();      // 1건
 ->value('F_ID');
@@ -85,7 +85,7 @@ DATE
 ->sum('F_AMOUNT');
 ->max('F_REGDATE');
 
-🔹 8. INSERT / UPDATE / DELETE
+6. INSERT / UPDATE / DELETE
 INSERT
 DB::table('T_NOTICE')->insert([
     'F_TITLE' => '제목',
@@ -105,7 +105,7 @@ DELETE
 DB::enableQueryLog();
 dd(DB::getQueryLog());
 
-🔹 10. 자주 쓰는 실무 패턴
+7. 자주 쓰는 실무 패턴
 조건 있을 때만 WHERE
 ->when($keyword, function ($q) use ($keyword) {
     $q->where('F_TITLE', 'like', "%{$keyword}%");
