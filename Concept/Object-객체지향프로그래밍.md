@@ -24,6 +24,7 @@ https://chobopark.tistory.com/222
 9. 소프트웨어 아키텍처란
 
 10. 접근제어자 protected, private 선택하는 기준? 필드는 private 보통 사용하는데 class에서 선언해놓고 사용하는 변수는 protected를 사용?
-================
+
+
 
 
