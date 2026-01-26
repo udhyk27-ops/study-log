@@ -52,18 +52,19 @@ git push origin ydh
 
 
 ### merge 이후 새 브랜치로 작업 ###
-1) 기존 브랜치 merge된것 확인
-2) 로컬 브랜치 삭제 (강제 삭제는 -D)
-git branch -d ydh
-
-3) 새 브랜치 만들기 - 최신 main 가져오기
+1) 기존 브랜치 merge된것 확인 후 main 브랜치로 이동
 git checkout main
+
+2) main 브랜치 최신화
 git pull origin main
 
-4) (로컬) 새 브랜치 생성
+3) 로컬 브랜치 삭제 (강제 삭제는 -D)
+git branch -d ydh
+
+5) (로컬) 새 브랜치 생성
 git checkout -b ydh
 
-5) 새 브랜치에서 작업 
+6) 새 브랜치에서 작업 
 
 
 
