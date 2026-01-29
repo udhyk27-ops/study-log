@@ -1,6 +1,8 @@
 # Java 블로그 주제 #
 
-## 웹 크롤링
+## 자바 에러 종류, 설명
+
+## 자바 웹 크롤링
 
 ## 동시성 / 멀티스레드
 1. synchronized vs ReentrantLock
