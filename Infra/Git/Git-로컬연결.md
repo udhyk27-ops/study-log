@@ -67,7 +67,3 @@ git checkout -b ydh
 6) 새 브랜치에서 작업 
 
 
-
-그 외  참조
-https://www.freecodecamp.org/korean/news/git-push-to-remote-branch/
-https://kkangsg.tistory.com/92
