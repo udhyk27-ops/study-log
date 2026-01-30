@@ -43,7 +43,7 @@ https://inpa.tistory.com/entry/JAVA-%E2%98%95-%EC%97%90%EB%9F%ACError-%EC%99%80-
 4. 올바른 예외 처리 방법
 https://mangkyu.tistory.com/152
 
-## 자바 웹 크롤링
+## 자바 웹 크롤링 
 
 ## 불변 객체와 final 사용해야하는 이유
 https://mangkyu.tistory.com/131
@@ -55,6 +55,8 @@ https://mangkyu.tistory.com/193
 ## DTO 클래스를 사용하는 이유 && 빌더패턴 사용해야 하는 이유
 https://mangkyu.tistory.com/164
 https://mangkyu.tistory.com/163#google_vignette
+
+===========================================
 
 ## 동시성 / 멀티스레드
 1. synchronized vs ReentrantLock
@@ -180,22 +182,7 @@ Spring 사용 사례: RequestContextHolder, TransactionSynchronizationManager
 
 ===========================================
 
-## 컬렉션 내부 동작
-1. HashMap은 왜 트리로 변하는가?
-[HashMap은 왜 특정 순간부터 트리로 변할까? (Java 8)]
-* 버킷 구조
-* 충돌 발생 과정
-* LinkedList → Red-Black Tree 전환 조건
-* 성능 변화
-
-2. ArrayList vs LinkedList 실제 성능 비교
-[ArrayList와 LinkedList를 실제로 비교해보니]
-* 접근 / 삽입 / 삭제 성능
-* CPU 캐시 친화성
-* 벤치마크 코드
-
----------------------------------------------------------------------------
-### Java 컬렉션과 내부 동작 이해
+### Java String 자료형
 1. String 참조자료형과 String Pool, String Builder까지
 https://toneyparky.tistory.com/28
 
@@ -218,6 +205,20 @@ equals() : 값 비교
 String은 immutable → HashMap key로 안전하게 사용 가능
 Pool과 new 생성 차이 이해
 hashCode()와 equals()가 컬렉션 동작에 어떻게 영향을 주는지 설명 가능
+
+2. String은 왜 immutable인가?
+[String은 왜 불변 객체로 설계됐을까]
+* String Pool
+* 보안 이슈
+* 성능 이점
+* StringBuilder와의 차이
+
+===========================================
+## Java 컬렉션과 내부 동작 이해
+
+1. 자바 컬렉션 정리
+https://gangnam-americano.tistory.com/41
+
 
 2. HashMap은 왜 트리로 변하는가? (Java 8+)
 HashMap은 내부적으로 버킷(bucket) 구조를 사용하며, **충돌(Collision)**이 발생하면 LinkedList로 연결합니다.
@@ -266,29 +267,6 @@ System.out.println("LinkedList: " + (System.nanoTime()-start));
 
 ===========================================
 
-
-### Java 핵심 개념
-1. String은 왜 immutable인가?
-[String은 왜 불변 객체로 설계됐을까]
-* String Pool
-* 보안 이슈
-* 성능 이점
-* StringBuilder와의 차이
-
-2. JVM에서 객체는 어디에 생성되는가?
-[객체는 항상 Heap에 생성될까? JVM 메모리 다시 보기]
-* Stack / Heap / Metaspace
-* Escape Analysis
-* GC 관점
-
-3. final / static / abstract 설계 관점
-[final, static, abstract를 설계 관점에서 다시 생각해보자]
-* 변경 가능성 차단
-* 테스트 영향
-* 객체지향 설계와의 관계
-
-===========================================
-
 ### 객체지향 & 설계
 1. if-else 지옥을 어떻게 없앴는가
 [if-else 지옥을 전략 패턴으로 제거해봤다]
@@ -302,6 +280,11 @@ System.out.println("LinkedList: " + (System.nanoTime()-start));
 * 적용 전 / 후 코드 비교
 * 유지보수성 변화
 
+3. final / static / abstract 설계 관점
+[final, static, abstract를 설계 관점에서 다시 생각해보자]
+* 변경 가능성 차단
+* 테스트 영향
+* 객체지향 설계와의 관계
 ===========================================
 
 ### Spring 핵심
@@ -377,3 +360,12 @@ https://mangkyu.tistory.com/144
 4. 학습 테스트 & 단위 테스트
 https://toneyparky.tistory.com/4
 https://springwiki.readthedocs.io/en/latest/%ED%95%99%EC%8A%B5%20%ED%85%8C%EC%8A%A4%ED%8A%B8%EB%A1%9C%20%EB%B0%B0%EC%9A%B0%EB%8A%94%20%EC%8A%A4%ED%94%84%EB%A7%81/
+
+## JAVA 메모리
+1. 메모리 사용 종류
+
+2. JVM에서 객체는 어디에 생성되는가?
+[객체는 항상 Heap에 생성될까? JVM 메모리 다시 보기]
+* Stack / Heap / Metaspace
+* Escape Analysis
+* GC 관점
