@@ -1,47 +1,163 @@
 # Java 블로그 주제 #
 
-## 자바 에러 종류, 설명
+## [Java] 에러와 예외의 차이 및 종류
+## [Java] 에러(Error)와 예외(Exception)의 차이 및 종류
 
-1. 에러와 예외의 차이
+1. 에러(Error)와 예외(Exception)의 차이점
 
-오류(Error)는 시스템이 종료되어야 할 수준의 상황과 같이 수습할 수 없는 심각한 문제를 의미합니다. 개발자가 미리 예측하여 방지할 수 없습니다.
-반면 예외(Exception)는 개발자가 구현한 로직에서 발생한 실수나 사용자의 영향에 의해 발생합니다. 오류와 달리 개발자가 미리 예측하여 방지할 수 있기에 상황에 맞는 예외처리(Exception Handle)를 해야합니다.
+오류(Error)는 시스템이 종료될 정도로 심각하여 프로그램에서 수습할 수 없는 문제이다. 개발자가 사전에 예측하여 방지하기 어렵다.
+예외(Exception)는 개발자가 작성한 로직에서 발생할 수 있는 실수나, 사용자의 잘못된 입력 등으로 발생하는 문제이다. 
+예외는 적절한 예외 처리(Exception Handling)를 통해 개발자가 사전에 예측하고 프로그램이 정상적으로 동작하도록 대응할 수 있다.
 
-오류와 예외의 상속 관계(그림)
+오류와 예외의 상속 관계
+(그림)
 
+Java에서 Error와 Exception은 모두 Throwable 클래스를 상속 받는다. 
+Throwable은 Java 최상위 클래스인 Object를 기반으로 만들어진 클래스이며, 오류와 예외 정보를 담고있다. 
+또한 예외가 다른 예외와 연결될 때(Chained Exception) 연결된 예외 정보도 기록할 수 있다.
 
-오류와 예외 모두 자바의 최상위 클래스인 Object를 상속받습니다. 그리고 그 사이에는 Throwable이라는 클래스와 상속관계가 있네요. 이 클래스에 대한 공식문서를 읽어보면 이 클래스의 객체에 오류나 예외에 대한 메시지를 담는다는 이야기가 나옵니다. 그리고 예외가 연결될 때(chained exception) 연결된 예외의 정보들을 기록하기도 한다고 합니다
-이 Throwable 객체가 가진 정보와 할 수 있는 행위는 getMessage()와 printStackTrace()라는 메서드로 구현되어 있는데요. 당연히 이를 상속받은 Error와 Exception에서 두 메서드를 사용한다는 사실은 유추할 수 있을 겁니다. 우리가 실제로 보는 에러 코드들은 이 두 메서드를 이용해서 콘솔상에 나타납니다.
-(Throwable 클래스에 대해 간략한 소개)
+Throwable 주요 메서드는 getMessage()와 printStackTrace()가 있는데 이를 통해 Error와 Exception 상황에서 오류 코드를 콘솔창에 나타낼 수 있다.
 
+getMessage(): 오류나 예외 메시지를 반환
+printStackTrace(): 예외 발생 시 호출 스택 정보를 콘솔에 출력
 
+public class Main {
+    public static void main(String[] args) {
+        try {
+            int result = 10 / 0; // ArithmeticException 발생
+        } catch (ArithmeticException e) {
+            System.out.println("예외 메시지: " + e.getMessage());
+            e.printStackTrace(); // 호출 스택 출력
+        }
 
-
-2. 에러의 종류
-
-
-
-컴파일 에러(compile-time error) : 컴파일시에 발생하는 에러 
-런타임 에러(runtime error) : 실행시에 발생하는 에러 
-논리적 에러(logical error) : 실행은 되지만 의도와 다르게 동작하는것
-
-
-[자주 발생하는 에러 종류]
-
-
-
-
-
-3. 예외의 종류
-Checked Exception, Unchecked Exception
-
+        // 시스템 수준의 Error 예시 (일반적으로 시도하지 않음)
+        // throw new OutOfMemoryError("메모리 부족!");
+    }
+}
 
 
+
+2. 에러(Error)의 종류
+
+Java에서 발생하는 에러는 크게 세 가지로 나뉜다.
+
+** 컴파일 에러(Compile-time Error)
+코드를 컴파일할 때 발생
+주로 문법 오류, 타입 불일치, 선언되지 않은 변수 사용 등에서 발생
+프로그램이 아예 실행되지 않고, 수정해야 컴파일이 완료됨
+
+** 런타임 에러(Runtime Error)
+프로그램 실행 중에 발생하는 에러
+예: 0으로 나누기(ArithmeticException), 배열 인덱스 초과(ArrayIndexOutOfBoundsException) 등
+실행 중이므로, 프로그램 도중 예외 처리를 통해 대응할 수 있다.
+
+** 논리적 에러(Logical Error)
+문법상 문제는 없지만, 프로그램이 의도와 다르게 동작하는 경우
+예: 평균을 구할 때 합계를 잘못 계산하거나, 조건문을 잘못 작성하는 경우
+컴파일도 통과하고 실행도 되지만, 결과가 기대와 다르게 나오는 경우
+
+쉽게 말하면,
+컴파일 에러 → 코드가 아예 안 돌아감
+런타임 에러 → 실행 중에 터짐
+논리적 에러 → 실행은 되지만 결과가 이상함
+
+
+3. 예외(Exception)의 종류
+
+Java에서 예외는 크게 두 가지로 나뉜다.
+
+** Checked Exception (체크 예외)
+컴파일 시점에 처리 여부를 반드시 확인해야 하는 예외
+
+예외 처리를 하지 않으면 컴파일이 되지 않는다.
+주로 외부 환경과 관련된 예외에서 발생한다.
+
+예시: IOException, SQLException
+
+import java.io.FileReader;
+import java.io.IOException;
+
+public class Main {
+    public static void main(String[] args) {
+        try {
+            FileReader reader = new FileReader("test.txt");
+        } catch (IOException e) {
+            System.out.println("파일 읽기 실패: " + e.getMessage());
+        }
+    }
+}
+
+** Unchecked Exception (언체크 예외, RuntimeException 계열)
+컴파일러가 처리 여부를 강제하지 않는다.
+실행 중 발생하며, 대부분 프로그래머 실수로 발생한다.
+
+예시: NullPointerException, ArithmeticException, ArrayIndexOutOfBoundsException
+
+public class Main {
+    public static void main(String[] args) {
+        String text = null;
+        System.out.println(text.length()); // NullPointerException
+    }
+}
+
+
+명시적 예외 처리 유무
+
+두 Checked / Unchecked  Exception의 가장 핵심적인 차이는 '반드시 예외 처리를 해야 하는가?' 이다.
+Checked Exception은 체크 하는 시점이 컴파일 단계이기 때문에, 별도의 예외 처리를 하지 않는다면 컴파일 자체가 되지 않는다. 
+Checked Exception이 발생할 가능성이 있는 메소드라면 반드시 로직을 try - catch로 감싸거나 throws로 던져서 처리해야 한다. 
+
+반면에 Unchecked Exception의 경우는 명시적인 예외 처리를 하지 않아도 된다. 
+Unchecked Exception도 예외이긴 하지만, 개발자의 충분한 주의로 미리 회피할 수 있는 경우가 대부분이라 그나마 상대적으로 미약한 예외로 처리되어 자바 컴파일러는 별도의 예외 처리를 하지 않도록 설계 되어 있기 때문이다.
+따라서 에러를 일부러 일으키는 코드가 있더라도 try - catch 처리하지 않더라도 컴파일도 되고 실행까지 가능하다.
+
+
+Checked를 Unchecked 예외로 변환하기
+앞서 checked exception은 반드시 try - catch 문으로 감싸야된다고 했었다.
+하지만 코드마다 일일히 예외처리하는 것도 귀찮고 오히려 가독성을 해친다고 생각할 경우, 그냥 unchecked exception으로 변환시켜 컴파일에게 예외처리를 강제하지 않게 할수있다.
+
+
+
+자주 발생하는 예외 정리
+
+예외	발생 상황
+NullPointerException	null 객체 접근
+ArithmeticException	0으로 나누기 등 산술 오류
+ArrayIndexOutOfBoundsException	배열 범위 초과
+ClassCastException	잘못된 타입 변환
+IOException	파일/네트워크 입출력 문제
+SQLException	DB 연동 문제
+
+
+올바른 예외 처리 방법 다른 글로 넘기기
+
+참고
 https://toneyparky.tistory.com/40
 https://inpa.tistory.com/entry/JAVA-%E2%98%95-%EC%97%90%EB%9F%ACError-%EC%99%80-%EC%98%88%EC%99%B8-%ED%81%B4%EB%9E%98%EC%8A%A4Exception-%F0%9F%92%AF-%EC%B4%9D%EC%A0%95%EB%A6%AC
 
-4. 올바른 예외 처리 방법
+### 자바 올바른 예외 처리 방법 (Code)
+
+1. checked, unchecked 예외
+
+2. try catch finally 올바른 사용
+
+3. throw 문
+4. 멀티 catch 문
+
+5. 예외 메시지 출력
+
+6. 사용자 정의 예외처리
+7. 예외 처리가 중요한 이유
+
+
+참고
+https://sung-98.tistory.com/134
 https://mangkyu.tistory.com/152
+https://inpa.tistory.com/entry/JAVA-%E2%98%95-%EC%98%88%EC%99%B8-%EC%B2%98%EB%A6%ACException-%EB%AC%B8%EB%B2%95-%EC%9D%91%EC%9A%A9-%EC%A0%95%EB%A6%AC
+
+## 자바 기본 동작원리(JVM, JRE, JDK)
+https://sung-98.tistory.com/133
+
 
 ## 자바 웹 크롤링 
 
@@ -53,6 +169,7 @@ https://mangkyu.tistory.com/131
 https://mangkyu.tistory.com/193
 
 ## DTO 클래스를 사용하는 이유 && 빌더패턴 사용해야 하는 이유
+https://sung-98.tistory.com/135
 https://mangkyu.tistory.com/164
 https://mangkyu.tistory.com/163#google_vignette
 
@@ -369,3 +486,9 @@ https://springwiki.readthedocs.io/en/latest/%ED%95%99%EC%8A%B5%20%ED%85%8C%EC%8A
 * Stack / Heap / Metaspace
 * Escape Analysis
 * GC 관점
+
+## static
+https://sung-98.tistory.com/136
+
+## generic
+https://sung-98.tistory.com/138

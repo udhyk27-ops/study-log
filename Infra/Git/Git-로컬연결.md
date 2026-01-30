@@ -5,7 +5,7 @@ git init
 
 ### 로컬 디렉토리에 git clone 후 연결 ### 
  1) git clone http://10.84.255.2:3000/oneidlab/dev-newscapture.oneidlab.kr.git
- ** clone 등 하다가 꼬였을 때 삭제 :  Remove-Item -Recurse -Force .git
+ *** clone 등 하다가 꼬였을 때 삭제 :  Remove-Item -Recurse -Force .git
  2) .git이 있는 곳으로 파일 이동
  3) git branch => main이 있으면 성공. 없으면 pull 등 해보기
  4) git checkout -b 브랜치명(-b: 브랜치 생성 + 이동)
@@ -13,7 +13,7 @@ git init
  6) git status로 확인
  7) cp .env.example .env로 db연결하기
  8) php artisan key:generate로 키생성
- ** 만약 안되면 composer install, composer require laravel/sanctum 등 실행
+ *** 만약 안 되면 composer install, composer require laravel/sanctum 등 실행
  9) php artisan serve로 서버실행 
 ##################################
 
@@ -21,7 +21,7 @@ git init
  
 
 ### (로컬) 내 브랜치 main 브랜치로 풀 리퀘스트  ###
-** push를 하여 풀리퀘스트 요청 전 자신의 로컬의 main 브랜치를 최신화 작업을 수행 후 진행해주세요
+*** push를 하여 풀리퀘스트 요청 전 자신의 로컬의 main 브랜치를 최신화 작업을 수행 후 진행해주세요
 
 1) 내 브랜치에 커밋할 내용 추가
 git add .
