@@ -2,7 +2,59 @@
 
 ## 자바 에러 종류, 설명
 
+1. 에러와 예외의 차이
+
+오류(Error)는 시스템이 종료되어야 할 수준의 상황과 같이 수습할 수 없는 심각한 문제를 의미합니다. 개발자가 미리 예측하여 방지할 수 없습니다.
+반면 예외(Exception)는 개발자가 구현한 로직에서 발생한 실수나 사용자의 영향에 의해 발생합니다. 오류와 달리 개발자가 미리 예측하여 방지할 수 있기에 상황에 맞는 예외처리(Exception Handle)를 해야합니다.
+
+오류와 예외의 상속 관계(그림)
+
+
+오류와 예외 모두 자바의 최상위 클래스인 Object를 상속받습니다. 그리고 그 사이에는 Throwable이라는 클래스와 상속관계가 있네요. 이 클래스에 대한 공식문서를 읽어보면 이 클래스의 객체에 오류나 예외에 대한 메시지를 담는다는 이야기가 나옵니다. 그리고 예외가 연결될 때(chained exception) 연결된 예외의 정보들을 기록하기도 한다고 합니다
+이 Throwable 객체가 가진 정보와 할 수 있는 행위는 getMessage()와 printStackTrace()라는 메서드로 구현되어 있는데요. 당연히 이를 상속받은 Error와 Exception에서 두 메서드를 사용한다는 사실은 유추할 수 있을 겁니다. 우리가 실제로 보는 에러 코드들은 이 두 메서드를 이용해서 콘솔상에 나타납니다.
+(Throwable 클래스에 대해 간략한 소개)
+
+
+
+
+2. 에러의 종류
+
+
+
+컴파일 에러(compile-time error) : 컴파일시에 발생하는 에러 
+런타임 에러(runtime error) : 실행시에 발생하는 에러 
+논리적 에러(logical error) : 실행은 되지만 의도와 다르게 동작하는것
+
+
+[자주 발생하는 에러 종류]
+
+
+
+
+
+3. 예외의 종류
+Checked Exception, Unchecked Exception
+
+
+
+https://toneyparky.tistory.com/40
+https://inpa.tistory.com/entry/JAVA-%E2%98%95-%EC%97%90%EB%9F%ACError-%EC%99%80-%EC%98%88%EC%99%B8-%ED%81%B4%EB%9E%98%EC%8A%A4Exception-%F0%9F%92%AF-%EC%B4%9D%EC%A0%95%EB%A6%AC
+
+4. 올바른 예외 처리 방법
+https://mangkyu.tistory.com/152
+
 ## 자바 웹 크롤링
+
+## 불변 객체와 final 사용해야하는 이유
+https://mangkyu.tistory.com/131
+
+
+## 오버라이딩과 오버로딩
+https://mangkyu.tistory.com/193
+
+## DTO 클래스를 사용하는 이유 && 빌더패턴 사용해야 하는 이유
+https://mangkyu.tistory.com/164
+https://mangkyu.tistory.com/163#google_vignette
 
 ## 동시성 / 멀티스레드
 1. synchronized vs ReentrantLock
@@ -17,6 +69,8 @@
 * remove() 안 했을 때 문제
 * Spring에서 사용 사례
 * 실제 장애 시나리오
+
+https://mangkyu.tistory.com/459
 
 
 ---------------------------------------------------------------------------
@@ -142,7 +196,9 @@ Spring 사용 사례: RequestContextHolder, TransactionSynchronizationManager
 
 ---------------------------------------------------------------------------
 ### Java 컬렉션과 내부 동작 이해
-1. String 참조자료형과 String Pool
+1. String 참조자료형과 String Pool, String Builder까지
+https://toneyparky.tistory.com/28
+
 Java에서 String은 immutable(변경 불가) 자료형입니다.
 String을 바꾸면 새 객체가 생성됨
 메모리를 효율적으로 관리하기 위해 String Pool을 사용합니다.
@@ -294,9 +350,10 @@ System.out.println("LinkedList: " + (System.nanoTime()-start));
 * 변경 추적
 * 도메인 설계
 
+https://sang-log.tistory.com/8
 ===========================================
 
-### 트랜잭션 & 예외
+### 트랜잭션
 1. @Transactional이 private에 안 먹는 이유
 [@Transactional이 private 메서드에 적용되지 않는 이유]
 * 프록시 기반 AOP
@@ -307,9 +364,16 @@ System.out.println("LinkedList: " + (System.nanoTime()-start));
 
 ===========================================
 
-### 테스트 & 실무 감각 (가산점)
+### 테스트 코드 **
 1. 테스트하기 어려운 코드를 리팩토링해봤다
 [테스트하기 어려운 코드를 리팩토링해봤다]
 
 2. Spring 테스트가 느린 이유와 해결법
 [Spring 테스트가 느린 이유와 해결 방법]
+
+3. 테스트 코드 작성법
+https://mangkyu.tistory.com/144
+
+4. 학습 테스트 & 단위 테스트
+https://toneyparky.tistory.com/4
+https://springwiki.readthedocs.io/en/latest/%ED%95%99%EC%8A%B5%20%ED%85%8C%EC%8A%A4%ED%8A%B8%EB%A1%9C%20%EB%B0%B0%EC%9A%B0%EB%8A%94%20%EC%8A%A4%ED%94%84%EB%A7%81/
