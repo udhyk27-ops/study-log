@@ -1,3 +1,4 @@
+디렉토리 
 git init
  git add .
  git commit --amend -m "text"

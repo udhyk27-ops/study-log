@@ -1,8 +1,16 @@
 오류(Error)는 시스템이 종료될 정도로 심각하여 프로그램에서 수습할 수 없는 문제이다. 개발자가 사전에 예측하여 방지하기 어렵다.
-
 예외(Exception)는 개발자가 작성한 로직에서 발생할 수 있는 실수나, 사용자의 잘못된 입력 등으로 발생하는 문제이다. 적절한 예외 처리(Exception Handling)를 통해 개발자가 사전에 예측하여 프로그램이 정상적으로 동작하도록 대응할 수 있다.
 
 오류와 예외의 상속 관계
+
+
+Exception 클래스와 그 서브클래스 중에서 RuntimeException 계열이 아닌 것들은 모두 Checked Exception이다. 
+체크드 예외는 메서드나 생성자의 실행 도중 발생할 수 있고, 그 예외가 메서드나 생성자 밖으로 전달될 수 있다면, 
+해당 메서드나 생성자의 throws 절에 반드시 선언하거나 try-catch 구문으로 처리해야 한다.
+
+Error는 Throwable의 서브 클래스로, 애플리케이션이 잡으려고 하지 않아야 하는 심각한 문제를 의미한다.
+대부분의 Error는 비정상적인 상태를 의미하고 ThreadDeath Error는 정상적인 상태이지만 잡지 않는 것이 권장된다.
+메서드는 Error 서브클래스를 throws로 선언할 필요가 없으며 컴파일 시 unchecked Exception으로 취급된다.
 
 
 Java에서 Error와 Exception은 모두 Throwable 클래스를 상속 받는다. 
