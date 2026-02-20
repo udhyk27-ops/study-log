@@ -1,3 +1,5 @@
+# [Java] 에러와 예외의 차이
+
 오류(Error)는 시스템이 종료될 정도로 심각하여 프로그램에서 수습할 수 없는 문제이다. 개발자가 사전에 예측하여 방지하기 어렵다.
 
 
@@ -100,15 +102,11 @@ public class Main {
 }
 
  
-
- 
 구분 	Checked 	Unchecked
 체크 시점 	컴파일 	런타임
 처리 강제 	O 	X
 상속 	Exception 	RuntimeException
 원인 	외부 요인 	코드 오류
-
- 
 
 명시적 예외 처리
 
