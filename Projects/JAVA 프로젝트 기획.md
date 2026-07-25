@@ -3,6 +3,7 @@ notion_page_id: 36181856-910c-81a3-80ec-cf2a6d42dfc5
 ---
 
 # 대화형 AI를 학습 및 기술 검토 용도로 활용하였으며, AI 코딩 에이전트는 사용하지 않았습니다. → 포폴 상단에 기재
+# README 내용 → 아키텍처, ERD, API명세, 시퀀스 다이어그램, 성능 비교 그래프, 락 비교 표, 트러블슈팅, 기술 선택 이유
 
 ## 토이 플젝
 1. 웹사이트 모니터링 시스템 - Scout
@@ -53,10 +54,13 @@ notion_page_id: 36181856-910c-81a3-80ec-cf2a6d42dfc5
 - **캐시/락**: Redis
 - **배포**: Docker + GitHub Actions + AWS EC2
 - **테스트**: JUnit, k6
-
+- **API문서**:Swagger
 
 
 # 메인 1: TicketFlow (한정상품 구매 시스템)
+
+# DB인덱스 적용 전후 실행계획 캡처(전후비교)
+# 테스트 컨테이너 - MySQL, Redis
 
 **역할**: 동시성 + 락 비교 + Redis + Queue 비동기 + 운영 로그
 
@@ -155,7 +159,8 @@ notion_page_id: 36181856-910c-81a3-80ec-cf2a6d42dfc5
 
 
 # 메인 2: JProxy (로컬 프록시 도구)
-
+# JPA, QueryDSL 조합 사용할지 생각
+# ex) Order -> User -> Product 조회 시 FetchJoin, EntityGraph 적용 전/후 쿼리 수 비교
 **역할**: 네트워크 프로그래밍 / 차별화
 
 다른 지원자와 겹치지 않는 영역(저수준 네트워크)을 보여주는 차별화 프로젝트.
@@ -173,7 +178,7 @@ notion_page_id: 36181856-910c-81a3-80ec-cf2a6d42dfc5
 - Docker
 - JUnit, Testcontainers
 - AWS EC2 다중 서버
-- Kubernetes 연동 (K8s API 조회)
+- AWS => RDS, Nginx, Github Actions, Docker Compose 기능 추가 고려
 
 ## 핵심 구현 기능
 
