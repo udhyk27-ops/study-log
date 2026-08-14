@@ -1,3 +1,6 @@
+---
+notion_page_id: 3bc81856-910c-815d-b03d-eeb427e4eed5
+---
 SQL*Loader로 CSV 데이터를 적재하면서 겪은 문제와 해결
 
 최근 업무에서 CSV 데이터를 Oracle 테이블에 대량으로 적재하기 위해 SQL*Loader를 사용했다.
