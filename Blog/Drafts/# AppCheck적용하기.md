@@ -1,3 +1,6 @@
+---
+notion_page_id: 3c681856-910c-8191-aaba-ddaf4cce1aa6
+---
 # Bibly App Check 적용기
 
 1. 앱 내에서 Gemini AI API 사용
